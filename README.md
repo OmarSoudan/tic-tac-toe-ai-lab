@@ -157,12 +157,22 @@ This laboratory is designed to make AI search methods tangible and understandabl
 - demonstrate how heuristics and stochastic search differ from minimax-based optimal play.
 
 ---
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/88149289-ceec-4f70-9ae2-5cc43f4e1a57" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a85fed68-5826-4395-9742-0e9ada8dc67c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5ed48290-fc33-45a3-b290-e4c07c16d303" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3abf3e5a-1fa5-4d49-a683-074f18524139" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9bbafe44-98b5-4759-ab45-64e3513b02fa" />
+
+
+
 
 ## Author
 
 Omar Soudan
 
 GitHub: [@OmarSoudan](https://github.com/OmarSoudan)
+
 
 ---
 
