@@ -1,91 +1,177 @@
 # ⭕❌ Tic-Tac-Toe AI Laboratory
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub Profile](https://img.shields.io/badge/Author-Omar%20Soudan-181717?logo=github)](https://github.com/OmarSoudan)
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" alt="Python 3.8+" />
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" />
+  <img src="https://img.shields.io/badge/author-Omar%20Soudan-181717?logo=github" alt="Author Omar Soudan" />
+</p>
 
-A game-grade **Game Theory and Artificial Intelligence laboratory** powered by hardware-accelerated Pygame graphics. Pit human intuition against classical and stochastic search paradigms, inspect live counterfactual move heatmaps with millisecond engine dossiers, and execute automated multi-engine tournament simulations.
+A polished, game-grade Tic-Tac-Toe research environment for exploring adversarial search, decision-making, and AI performance in a visually interactive interface. This project combines a modern Pygame UI with several classic and stochastic algorithms to compare strategy quality, speed, and search behavior in real time.
 
----
+## Overview
 
-## ⚡ Core Highlights
+This project is designed for experimentation and visualization rather than just gameplay. It lets you:
 
-- **Hardware-Accelerated Pygame GUI**: Smooth 60 FPS vector rendering, glow highlights, dynamic hover states, responsive resizing, and windowless fullscreen (`F11`).
-- **Real-Time Candidate Move Heatmap**: Visual evaluation badges overlaying unplayed cells (+1.0 forced victory, 0.0 equilibrium draw, -1.0 concession).
-- **Move Decision & Search Dossier**: Live computational telemetry updating on every move:
-  - Wall-clock search latency (ms)
-  - Evaluated state-space nodes
-  - Maximum ply depth reached
-  - Alpha-Beta pruned subtrees
-  - Natural-language reasoning stream explaining why the chosen move was played and why alternative cells were rejected
-- **Engine vs. Engine Tournament Mode**: Run automated $N$-round head-to-head simulations (e.g., Alpha-Beta vs. MCTS) with alternating starting turns to compare win/draw rates, latency curves, and tree efficiency.
-- **Dual Match Modes**: Select exact search engines or challenge tiered difficulties (*Casual*, *Intermediate*, *Unbeatable*).
+- play against multiple AI strategies,
+- compare minimax-style search with stochastic rollout methods,
+- inspect live move telemetry and reasoning,
+- run head-to-head engine simulations,
+- benchmark algorithmic performance under different board states.
 
----
-
-## 🔬 Algorithmic Breakdown
-
-| Engine | Search Paradigm | Game-Theoretic Optimality | Search Tree Pruning | Typical Move Latency |
-| :--- | :--- | :--- | :--- | :--- |
-| **Alpha-Beta Pruning** | Minimax + Cutoff Branches | **Guaranteed Optimal** | $\beta \le \alpha$ subtree pruning | < 4 ms |
-| **Pure Minimax** | Exhaustive Backward Induction | **Guaranteed Optimal** | None (Exhaustive leaf evaluation) | ~80–120 ms |
-| **MCTS (UCB1)** | Stochastic Rollout Playouts | Asymptotically Optimal | Upper Confidence Bounds selection | ~20–35 ms |
-| **Rule-Based Expert** | Priority-Weighted Heuristics | Near-Optimal | Handcrafted tactical hierarchy | < 0.1 ms |
-| **Random Baseline** | Uniform Sampling | Stochastic / Naive | None | < 0.01 ms |
+The application is built around a clean game engine and modular AI architecture, making it easy to extend with additional agents or evaluation metrics.
 
 ---
 
-## 📁 Repository Structure
+## Features
+
+- Hardware-accelerated Pygame interface with responsive layout and fullscreen support
+- Real-time candidate evaluation heatmap for legal moves
+- Live telemetry for each move including:
+  - search latency,
+  - node counts,
+  - max depth reached,
+  - pruning statistics,
+  - strategic rationale
+- Engine-vs-engine tournament mode with alternating starting turns
+- Dual play modes:
+  - exact algorithm selection,
+  - difficulty-based challenges
+- Benchmark runner for comparing search quality and computational cost
+
+---
+
+## Available Engines
+
+| Engine | Search Paradigm | Typical Behavior | Tradeoff |
+| :--- | :--- | :--- | :--- |
+| Alpha-Beta Pruning | Minimax + pruning | Strong and efficient | Excellent decision quality with low latency |
+| Pure Minimax | Exhaustive game-tree search | Optimal but computationally heavier | Slower on larger search horizons |
+| MCTS (UCB1) | Monte Carlo rollouts | Approximates strong play via stochastic simulation | Good for uncertainty and faster exploratory evaluation |
+| Rule-Based Expert | Heuristic tactical rules | Fast and human-like | Not guaranteed optimal |
+| Random Baseline | Uniform random play | Unstructured decisions | Useful as a baseline comparator |
+
+---
+
+## Repository Structure
 
 ```text
-tic-tac-toe-ai-lab/
+ tic-tac-toe-ai-lab/
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
 ├── main.py
 └── core/
     ├── __init__.py
-    ├── game.py              # State representation, terminal checks, win bitmasks
-    ├── comparison.py        # Head-to-head tournament benchmark runner
-    ├── gui.py               # 60 FPS Pygame graphics engine & telemetry UI
+    ├── game.py               # Core game logic, board state, win detection
+    ├── comparison.py         # Tournament benchmark runner
+    ├── gui.py                # Pygame UI and experimental controls
     └── engines/
-        ├── __init__.py      # Engine and telemetry exports
-        ├── base.py          # Abstract engine interface & candidate evaluation types
-        ├── minimax.py       # Alpha-Beta & pure Minimax with alternate move scoring
-        ├── mcts.py          # Monte Carlo Tree Search with UCB1 exploration
-        ├── heuristic.py     # Priority-matrix rule engine
-        └── random_agent.py  # Uniform random sampler
+        ├── __init__.py      # Exports all engine implementations
+        ├── base.py          # Abstract engine interface and telemetry models
+        ├── minimax.py       # Alpha-Beta and pure minimax implementations
+        ├── mcts.py          # Monte Carlo Tree Search with UCB1
+        ├── heuristic.py     # Rule-based tactical AI
+        └── random_agent.py  # Random move generator
+```
 
+---
 
-🚀 Getting Started
-Prerequisites
-Python 3.8 or higher
+## Getting Started
 
-pip package manager
+### Prerequisites
 
+- Python 3.8 or higher
+- pip package manager
 
-git clone [https://github.com/OmarSoudan/tic-tac-toe-ai-lab.git](https://github.com/OmarSoudan/tic-tac-toe-ai-lab.git)
+### Install
+
+```bash
+git clone https://github.com/OmarSoudan/tic-tac-toe-ai-lab.git
 cd tic-tac-toe-ai-lab
+python -m venv .venv
+source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-Launch Interactive Desktop GUI
+### Run the interactive game
 
+```bash
 python main.py
+```
 
-Press F11 to toggle edge-to-edge fullscreen.
+### Optional: run the headless benchmark
 
-Click Toggle Heatmap to display cell-by-cell score evaluations.
-
-Switch to the Engine Tournament tab to run automated matchups.
-
-Run Headless Terminal Profiler
+```bash
 python main.py --benchmark
+```
 
-👨‍💻 Author
+This prints a quick table comparing engine latency, search depth, and node counts for a representative board state.
+
+---
+
+## How to Use the Application
+
+1. Launch the GUI with `python main.py`.
+2. Select an engine or difficulty mode.
+3. Play against the AI or let two engines compete.
+4. Toggle the heatmap to inspect move-quality estimates.
+5. Press `F11` to toggle fullscreen.
+6. Open the tournament tab to run a multi-game comparison between algorithms.
+
+### Controls
+
+- `F11`: toggle fullscreen
+- Restart: reset the board
+- AI Move First: let the computer start
+- Toggle Heatmap: show or hide evaluated move scores
+
+---
+
+## Technologies
+
+- Python 3.8+
+- Pygame for visualization and interaction
+- NumPy for numerical and evaluation-related processing
+- Search and decision algorithms for game-playing intelligence
+
+---
+
+## Benchmarking Notes
+
+The project includes a lightweight benchmark runner used to assess computational characteristics of each strategy. This is useful for comparing:
+
+- average search time per move,
+- number of nodes evaluated,
+- maximum search depth,
+- overall quality of generated decisions in a controlled test position.
+
+---
+
+## Project Goals
+
+This laboratory is designed to make AI search methods tangible and understandable:
+
+- visualize board evaluation,
+- compare exact and approximate decision-making,
+- study pruning behavior,
+- demonstrate how heuristics and stochastic search differ from minimax-based optimal play.
+
+---
+
+## Author
+
 Omar Soudan
 
-GitHub: @OmarSoudan
+GitHub: [@OmarSoudan](https://github.com/OmarSoudan)
 
-📜 License
-Distributed under the MIT License. See LICENSE for details.
+---
 
+## License
+
+This project is distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## Contributing
+
+Issues, feature ideas, and pull requests are welcome. This project is well-suited for experimentation with additional engines, improved heuristics, and richer analytics dashboards.
